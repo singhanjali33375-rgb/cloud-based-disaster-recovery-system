@@ -26,9 +26,40 @@ cloud environments.
 - AWS IAM
 - Bash Shell Scripting
 - AWS CLI
-
+  🎯 Goal
+Primary region down recovery data + infra 
+🧭 DR STRATEGY (जो interview में बोलोगी)
+Strategy used:
+👉 Pilot Light + Backup & Restore
+Primary Region: ap-south-1 (Mumbai)
+DR Region: ap-southeast-1 (Singapore)
+🏗️ UPDATED ARCHITECTURE
+Users
+  ↓
+Primary EC2 (Mumbai)
+  ↓
+Automated Backup
+  ↓
+S3 (Cross-Region Replication)
+  ↓
+EC2 Snapshots (Copy to DR Region)
+  ↓
+Recovery EC2 (Singapore)
 ---
-
+📁 NEW FILES (Existing repo)
+cloud-based-disaster-recovery-system/
+│
+├── terraform/
+│   ├── provider.tf
+│   ├── s3.tf
+│   ├── ec2.tf
+│   └── outputs.tf
+│
+├── automation/
+│   └── snapshot-copy.sh
+│
+└── docs/
+    └── dr-strategy.md
 ## ✨ Features
 
 - Automated EC2 instance backups
@@ -81,3 +112,6 @@ high availability.
 ## 📄 License
 
 This project is for learning and educational purposes.
+Implemented a multi-region cloud-based disaster recovery system on AWS
+using EC2 snapshots, S3 cross-region replication, and Terraform automation
+to ensure high availability and fast recovery.
