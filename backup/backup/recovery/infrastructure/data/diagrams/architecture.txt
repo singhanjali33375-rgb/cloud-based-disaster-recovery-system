@@ -1,0 +1,5 @@
+User → EC2 → Backup Script → S3
+                  ↓
+              Snapshot
+                  ↓
+              Recovery Script
